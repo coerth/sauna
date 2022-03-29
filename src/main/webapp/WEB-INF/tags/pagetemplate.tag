@@ -32,10 +32,10 @@
                     <a class="nav-item nav-link" href="${pageContext.request.contextPath}/">Side 1</a>
                     <a class="nav-item nav-link" href="${pageContext.request.contextPath}/">Side 2</a>
                     <a class="nav-item nav-link" href="${pageContext.request.contextPath}/">Side 3</a>
-                    <c:if test="${sessionScope.bruger == null }">
+                    <c:if test="${sessionScope.user == null }">
                         <a class="nav-item nav-link" href="${pageContext.request.contextPath}/login.jsp">Login</a>
                     </c:if>
-                    <c:if test="${sessionScope.bruger != null }">
+                    <c:if test="${sessionScope.user != null }">
                         <a class="nav-item nav-link" href="${pageContext.request.contextPath}/logout">Log ud</a>
                     </c:if>
                 </div>

@@ -1,41 +1,41 @@
 package dat.startcode.persistence;
 
-import dat.startcode.entities.Bruger;
+import dat.startcode.entities.User;
 import dat.startcode.exceptions.DatabaseException;
 
 import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class BrugerMapper implements IBrugerMapper
+public class UserMapper implements IUserMapper
 {
     ConnectionPool connectionPool;
 
-    public BrugerMapper(ConnectionPool connectionPool)
+    public UserMapper(ConnectionPool connectionPool)
     {
         this.connectionPool = connectionPool;
     }
 
     @Override
-    public Bruger login(String email, String kodeord) throws DatabaseException
+    public User login(String email, String password) throws DatabaseException
     {
         Logger.getLogger("web").log(Level.INFO, "");
 
-        Bruger bruger = null;
+        User user = null;
 
-        String sql = "SELECT * FROM bruger WHERE email = ? AND kodeord = ?";
+        String sql = "SELECT * FROM bruger WHERE email = ? AND password = ?";
 
         try (Connection connection = connectionPool.getConnection())
         {
             try (PreparedStatement ps = connection.prepareStatement(sql))
             {
                 ps.setString(1, email);
-                ps.setString(2, kodeord);
+                ps.setString(2, password);
                 ResultSet rs = ps.executeQuery();
                 if (rs.next())
                 {
                     String rolle = rs.getString("rolle");
-                    bruger = new Bruger(email, kodeord, rolle);
+                    user = new User(email, password, rolle);
                 } else
                 {
                     throw new DatabaseException("Fejl i brugernavn eller kodeord");
@@ -45,26 +45,26 @@ public class BrugerMapper implements IBrugerMapper
         {
             throw new DatabaseException(ex, "Fejl under indlogning. Der er noget galt med databasen");
         }
-        return bruger;
+        return user;
     }
 
     @Override
-    public Bruger opretBruger(String email, String kodeord, String rolle) throws DatabaseException
+    public User createPassword(String email, String password, String role) throws DatabaseException
     {
         Logger.getLogger("web").log(Level.INFO, "");
-        Bruger bruger;
-        String sql = "insert into bruger (email, kodeord, rolle) values (?,?,?)";
+        User user;
+        String sql = "insert into user (email, password, role) values (?,?,?)";
         try (Connection connection = connectionPool.getConnection())
         {
             try (PreparedStatement ps = connection.prepareStatement(sql))
             {
                 ps.setString(1, email);
-                ps.setString(2, kodeord);
-                ps.setString(3, rolle);
+                ps.setString(2, password);
+                ps.setString(3, role);
                 int rowsAffected = ps.executeUpdate();
                 if (rowsAffected == 1)
                 {
-                    bruger = new Bruger(email, kodeord, rolle);
+                    user = new User(email, password, role);
                 } else
                 {
                     throw new DatabaseException("Brugeren med email = " + email + " kunne ikke oprettes i databasen");
@@ -75,7 +75,7 @@ public class BrugerMapper implements IBrugerMapper
         {
             throw new DatabaseException(ex, "Kunne ikke indsætte bruger i databasen");
         }
-        return bruger;
+        return user;
     }
 
 

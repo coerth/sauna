@@ -11,9 +11,9 @@ import java.util.logging.Logger;
 public class ConnectionPool
 {
     private HikariDataSource ds;
-    private static String USER = "root";
-    private static String PASSWORD = "root";
-    private static String URL = "jdbc:mysql://localhost:3306/bibliotek";
+    private static String USER = "SQLUser";
+    private static String PASSWORD = "Bananflue";
+    private static String URL = "jdbc:mysql://localhost:3306/sauna";
 
     public ConnectionPool()
     {

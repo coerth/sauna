@@ -1,9 +1,9 @@
 package dat.startcode.web;
 
 import dat.startcode.config.ApplicationStart;
-import dat.startcode.entities.Bruger;
+import dat.startcode.entities.User;
 import dat.startcode.exceptions.DatabaseException;
-import dat.startcode.persistence.BrugerMapper;
+import dat.startcode.persistence.UserMapper;
 import dat.startcode.persistence.ConnectionPool;
 
 import javax.servlet.ServletException;
@@ -39,16 +39,16 @@ public class Login extends HttpServlet
         response.setContentType("text/html");
         HttpSession session = request.getSession();
         session.setAttribute("bruger", null); // sætter session variabel
-        BrugerMapper brugerMapper = new BrugerMapper(connectionPool);
-        Bruger bruger = null;
+        UserMapper brugerMapper = new UserMapper(connectionPool);
+        User user = null;
         String email = request.getParameter("email");
         String kodeord = request.getParameter("kodeord");
 
         try
         {
-            bruger = brugerMapper.login(email, kodeord);
+            user = brugerMapper.login(email, kodeord);
             session = request.getSession();
-            session.setAttribute("bruger", bruger); // sætter session variabel
+            session.setAttribute("bruger", user); // sætter session variabel
             request.getRequestDispatcher("index.jsp").forward(request, response);
         }
         catch (DatabaseException e)

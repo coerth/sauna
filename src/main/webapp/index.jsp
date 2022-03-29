@@ -16,11 +16,11 @@
 
         <p>Velkommen til 2. semesters startkode. </p>
 
-        <c:if test="${sessionScope.bruger != null}">
-            <p>Du er nu logget på med rollen "${sessionScope.bruger.rolle}".</p>
+        <c:if test="${sessionScope.user != null}">
+            <p>Du er nu logget på med rollen "${sessionScope.user.role}".</p>
         </c:if>
 
-        <c:if test="${sessionScope.bruger == null}">
+        <c:if test="${sessionScope.user == null}">
             <p>Du er ikke logget på endnu. Du kan gøre det her: <a
                     href="login.jsp">Login</a></p>
         </c:if>

@@ -14,16 +14,16 @@ Der er med vilje ikke refaktoreret i bund, og der er ikke lavet design, men appl
 Funtionelt kan applikationen:
 
 - Vise en forside med links til undersider, som endnu ikke er lavet
-- Logge en bruger på. Der findes to brugere i databasen.
+- Logge en user på. Der findes to brugere i databasen.
   1. a@a.dk med kodeord: 1234 (rolle: laaner)
   2. b@b.dk med kodeord: 1234 (rolle: admin)
-  - Man kan se på index.jsp hvordan man kan udnytte om en bruger er logget på eller ej.
+  - Man kan se på index.jsp hvordan man kan udnytte om en user er logget på eller ej.
   - Hvis man indtaster ugyldige data under indlogning, bliver man sendt til en en fejlside.
 
 ## Du skal gøre følgende for at få webapplikationen i luften:
 
 1. Først skal du clone projektet eller downloade en zip-fil med projektet til din arbejdsstation.
-2. Dernæst skal du åbne Workbench og lave en database til projektet med minimum en bruger-tabel.
+2. Dernæst skal du åbne Workbench og lave en database til projektet med minimum en user-tabel.
 3. Lav en test-database, som har en kopi af den rigtige databases struktur.
 4. Du skal evt. ændre kodeord til databasen i projektet. Det gøres i filerne: `/persistence/ConnectionPool` i linie 14 og 15. Du skal også ændre i testfilen til begge datamappere.
 5. Til sidst skal du lave en Tomcat konfiguration. Dvs, 

@@ -20,8 +20,8 @@
         <form action="login" method="post">
             <label for="email">Brugernavn: </label>
             <input type="text" id="email" name="email"/>
-            <label for="kodeord">Kodeord: </label>
-            <input type="password" id="kodeord" name="kodeord"/>
+            <label for="password">password: </label>
+            <input type="password" id="password" name="password"/>
             <input type="submit"  value="Log ind"/>
         </form>
 
