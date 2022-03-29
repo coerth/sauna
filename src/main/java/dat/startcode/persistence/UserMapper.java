@@ -23,7 +23,7 @@ public class UserMapper implements IUserMapper
 
         User user = null;
 
-        String sql = "SELECT * FROM bruger WHERE email = ? AND password = ?";
+        String sql = "SELECT * FROM user WHERE email = ? AND password = ?";
 
         try (Connection connection = connectionPool.getConnection())
         {
@@ -34,8 +34,8 @@ public class UserMapper implements IUserMapper
                 ResultSet rs = ps.executeQuery();
                 if (rs.next())
                 {
-                    String rolle = rs.getString("rolle");
-                    user = new User(email, password, rolle);
+                    String role = rs.getString("role");
+                    user = new User(email, password, role);
                 } else
                 {
                     throw new DatabaseException("Fejl i brugernavn eller kodeord");

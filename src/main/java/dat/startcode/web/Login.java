@@ -38,17 +38,17 @@ public class Login extends HttpServlet
     {
         response.setContentType("text/html");
         HttpSession session = request.getSession();
-        session.setAttribute("bruger", null); // sætter session variabel
-        UserMapper brugerMapper = new UserMapper(connectionPool);
+        session.setAttribute("user", null); // sætter session variabel
+        UserMapper userMapper = new UserMapper(connectionPool);
         User user = null;
         String email = request.getParameter("email");
-        String kodeord = request.getParameter("kodeord");
+        String password = request.getParameter("password");
 
         try
         {
-            user = brugerMapper.login(email, kodeord);
+            user = userMapper.login(email, password);
             session = request.getSession();
-            session.setAttribute("bruger", user); // sætter session variabel
+            session.setAttribute("user", user); // sætter session variabel
             request.getRequestDispatcher("index.jsp").forward(request, response);
         }
         catch (DatabaseException e)
