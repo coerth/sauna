@@ -92,16 +92,6 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `Sauna`.`Waitinglist`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `Sauna`.`Waitinglist` ;
-
-CREATE TABLE IF NOT EXISTS `Sauna`.`Waitinglist` (
-  `waitinglist_id` INT NOT NULL AUTO_INCREMENT)
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
 -- Table `Sauna`.`User`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `Sauna`.`User` ;
