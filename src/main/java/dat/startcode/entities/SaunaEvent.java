@@ -56,4 +56,16 @@ public class SaunaEvent
     public int hashCode() {
         return Objects.hash(eventID, startTime, duration, price, participants, address);
     }
+
+    @Override
+    public String toString() {
+        return "SaunaEvent{" +
+                "eventID=" + eventID +
+                ", startTime='" + startTime + '\'' +
+                ", duration=" + duration +
+                ", price=" + price +
+                ", participants=" + participants +
+                ", address='" + address + '\'' +
+                '}';
+    }
 }
